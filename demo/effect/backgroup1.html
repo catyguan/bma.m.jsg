@@ -8,7 +8,6 @@
 	<script src="../../ws.js/jquery-1.7.2.js"></script>
 	<script src="../../ws.js/jquery.mobile-1.1.0.js"></script>
 	<script src="../../ws.js/jquery.timers.js"></script>
-	<script src="../../ws.js/jquery.dataset.js"></script>
 
 <style type="text/css">
 .bg-live1 {
@@ -26,23 +25,23 @@ $(document).ready(function() {
 		var mw = 320-240;
 		var step = 1;
 		var o = $('.bg-live1');
-		var pos = parseInt(o.dataset('bg_live_pos'));
-		var dir = o.dataset('bg_live_dir');
+		var pos = parseInt(o.jqmData('bg_live_pos'));
+		var dir = o.jqmData('bg_live_dir');
 		if(dir=='0') {
 			pos-=step;
 			if(pos<=-mw) {
-				o.dataset('bg_live_dir','1');
+				o.jqmData('bg_live_dir','1');
 				pos=-mw;
 			}
 		} else {
 			pos+=step;
 			if(pos>=0) {
-				o.dataset('bg_live_dir','0');
+				o.jqmData('bg_live_dir','0');
 				pos=0;
 			}
 		}
 		o.css('background-position',pos+'px 0px');
-		o.dataset('bg_live_pos',pos);
+		o.jqmData('bg_live_pos',pos);
 	});
 });
 </script>
