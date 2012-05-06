@@ -15,7 +15,7 @@
 	width: 240px;
 	height: 200px;
 	background-image: url(http://img.pcpc.me/uploads/allimg/100623/1-1006232115110-L.jpg);
-	background-attachment:fixed;
+	background-attachment:score;
 	background-position:0px 0px;
 }
 </style>	
@@ -24,7 +24,6 @@
 $(document).ready(function() {
 	$(document).everyTime(100,function() {
 		var mw = 320-240;
-		var s = 16;
 		var step = 1;
 		var o = $('.bg-live1');
 		var pos = parseInt(o.dataset('bg_live_pos'));
@@ -42,7 +41,7 @@ $(document).ready(function() {
 				pos=0;
 			}
 		}
-		o.css('background-position',(pos+s)+'px 16px');
+		o.css('background-position',pos+'px 0px');
 		o.dataset('bg_live_pos',pos);
 	});
 });
