@@ -7,61 +7,50 @@
 	<link rel="stylesheet"  href="../../ws.css/jquery.mobile-1.1.0.css" />
 	<script src="../../ws.js/jquery-1.7.2.js"></script>
 	<script src="../../ws.js/jquery.mobile-1.1.0.js"></script>
-	<script src="../../ws.js/jquery.timers.js"></script>
-
-<style type="text/css">
-.bg-live1 {
-	width: 240px;
-	height: 200px;
-	background-image: url(http://img.pcpc.me/uploads/allimg/100623/1-1006232115110-L.jpg);
-	background-attachment:score;
-	background-position:0px 0px;
-}
-</style>	
-
-<script type="text/javascript">
-$(document).ready(function() {
-	$(document).everyTime(100,function() {
-		var mw = 320-240;
-		var step = 1;
-		var o = $('.bg-live1');
-		var pos = parseInt(o.jqmData('bg_live_pos'));
-		var dir = o.jqmData('bg_live_dir');
-		if(dir=='0') {
-			pos-=step;
-			if(pos<=-mw) {
-				o.jqmData('bg_live_dir','1');
-				pos=-mw;
-			}
-		} else {
-			pos+=step;
-			if(pos>=0) {
-				o.jqmData('bg_live_dir','0');
-				pos=0;
-			}
-		}
-		o.css('background-position',pos+'px 0px');
-		o.jqmData('bg_live_pos',pos);
-	});
-});
-</script>
+	<script src="../../ws.js/jquery.jsg.js"></script>
 </head> 
 <body> 
-<div data-role="page">
+    
+<div data-role="page" id="page1">
 
-<div data-role="header" data-theme="f">
-	<h1>活动背景图</h1>
-	<a href="../../index.html" data-icon="home" data-iconpos="notext" >Home</a>
+    <div data-role="header" data-theme="f">
+    	<h1>活动背景图</h1>
+    	<a href="../../index.html" data-icon="home" data-iconpos="notext" >Home</a>
+    </div>
+    
+    <div data-role="content">
+    	<div class="content-primary">
+    		<div class="livebg">
+    		    <a href="#page2">Swith</a>
+    		</div>
+    	</div>
+    </div>
+
+<script>
+var x = 0;
+$('#page1').bind('pageshow',function(ev) {
+    $('.livebg',ev.target).livebg({
+            width : 240,
+            height:200,
+            bgwidth:320,
+            bgheight:200,
+            img: "1-1006232115110-L.jpg",
+        });
+});
+$('#page1').bind('pagehide',function(ev) {
+    $('.livebg',ev.target).livebg(false);
+});
+</script>
+
 </div>
 
-<div data-role="content">
-	<div class="content-primary">
-		<div class="bg-live1" data-bg_live_pos="0" data-bg_live_dir="0">
-		
-		</div>
-	</div>
+<div data-role="page" id="page2">
+    <div data-role="content">
+    	<div class="content-primary">
+    		<a href="#page1">Back</a>    		
+    	</div>
+    </div>
 </div>
 
-</div>
 </body>
 </html>
